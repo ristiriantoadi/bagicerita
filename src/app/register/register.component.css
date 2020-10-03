@@ -1,0 +1,10 @@
+.dialog-form{
+    padding:20px 10px;
+    margin-top:10px;
+}
+  
+  .dialog-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }

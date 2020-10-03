@@ -1,0 +1,22 @@
+<div class="dialog-heading">
+    <h1 mat-dialog-title style="margin-bottom: 0;">Login</h1>
+    <!-- <span class="fill-remaining-space"></span> -->
+    <button mat-button color="white" class="close-icon" [mat-dialog-close]="true">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<div class="dialog-form">
+    <mat-form-field style="width: 300px;" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 300px;" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password">
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary">
+        Login
+    </button>
+</div>
