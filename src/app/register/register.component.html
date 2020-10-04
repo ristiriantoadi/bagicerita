@@ -6,22 +6,24 @@
     </button>
 </div>
 <div class="dialog-form">
-    <mat-form-field style="width: 300px;" appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <br>
-    <mat-form-field style="width: 300px;" appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput type="password">
-    </mat-form-field>
-    <br>
-    <mat-form-field style="width: 300px;" appearance="fill">
-        <mat-label>Konfirmasi Password</mat-label>
-        <input matInput type="password">
-    </mat-form-field>
-    <br>
-    <button mat-flat-button color="primary">
-        Register
-    </button>
+    <form [formGroup] = "registerForm">
+        <mat-form-field style="width: 300px;" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput>
+          </mat-form-field>
+          <br>
+          <mat-form-field style="width: 300px;" appearance="fill">
+              <mat-label>Password</mat-label>
+              <input formControlName="password" matInput type="password">
+          </mat-form-field>
+          <br>
+          <mat-form-field style="width: 300px;" appearance="fill">
+              <mat-label>Konfirmasi Password</mat-label>
+              <input matInput type="password">
+          </mat-form-field>
+          <br>
+          <button (click)="register()" mat-flat-button color="primary">
+              Register
+          </button>
+    </form>
 </div>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-96299": {
+      "hosting": {
+        "bagicerita": [
+          "angular-96299"
+        ]
+      }
+    }
+  }
+}

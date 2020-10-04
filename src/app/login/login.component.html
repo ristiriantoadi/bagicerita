@@ -6,17 +6,19 @@
     </button>
 </div>
 <div class="dialog-form">
+  <form [formGroup] = "loginForm">
     <mat-form-field style="width: 300px;" appearance="fill">
       <mat-label>Email</mat-label>
-      <input matInput>
+      <input  formControlName="email" matInput>
     </mat-form-field>
     <br>
     <mat-form-field style="width: 300px;" appearance="fill">
         <mat-label>Password</mat-label>
-        <input matInput type="password">
+        <input  formControlName="password" matInput type="password">
       </mat-form-field>
       <br>
-      <button mat-flat-button color="primary">
+      <button (click)="login()" mat-flat-button color="primary">
         Login
     </button>
+  </form>
 </div>
