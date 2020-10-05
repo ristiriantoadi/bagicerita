@@ -3,6 +3,8 @@ import { Router } from  "@angular/router";
 import { auth } from  'firebase/app';
 import { AngularFireAuth } from  "@angular/fire/auth";
 import { User } from  'firebase';
+import { MatDialogRef } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ import { User } from  'firebase';
 export class AuthService {
 
   user: User;
-  constructor(public  afAuth:  AngularFireAuth) { 
+  constructor(public  afAuth:  AngularFireAuth,public router:Router) { 
     this.afAuth.authState.subscribe(user => {
       if (user){
         this.user = user;
@@ -21,18 +23,17 @@ export class AuthService {
     })
   }
 
-  async login(email: string, password: string) {
+  async login(email: string, password: string,dialogRef:MatDialogRef<LoginComponent>) {
     var result = await this.afAuth.signInWithEmailAndPassword(email, password)
     // this.router.navigate(['admin/list']);
     // console.log(result)
-    console.log(this.isLoggedIn)
+    // this.router.navigate(['/']);
 
   }
 
   async register(email: string, password: string) {
     var result = await this.afAuth.createUserWithEmailAndPassword(email, password)
     // console.log(result);
-    console.log(this.isLoggedIn)
   }
 
   get isLoggedIn(): boolean {
@@ -43,4 +44,11 @@ export class AuthService {
   getUser(){
     return JSON.parse(localStorage.getItem('user'));
   }
+
+  async logout(){
+    await this.afAuth.signOut();
+    localStorage.removeItem('user');
+    console.log("logout")
+    // this.router.navigate(['/']);
+}
 }

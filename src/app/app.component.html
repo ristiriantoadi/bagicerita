@@ -10,8 +10,15 @@
   <button mat-icon-button color="primary" class="example-icon" aria-label="Example icon-button with share icon">
   <mat-icon>share</mat-icon>
   </button> -->
-  <a mat-button (click)="openLogin()">Login</a>
-  <a mat-button (click)="openRegister()">Register</a>
+  <div *ngIf="isLoggedIn;then thenBlock;else elseBlock"></div>
+  <ng-template #thenBlock>
+    <a mat-button (click)="openLogin()">{{user}}</a>
+    <a mat-button (click)="logout()">Logout</a>
+  </ng-template>
+  <ng-template #elseBlock>
+    <a mat-button (click)="openLogin()">Login</a>
+    <a mat-button (click)="openRegister()">Register</a>
+  </ng-template>
 </mat-toolbar>
 <div style="padding:20px" class="container">
   <h1  class="mat-h1">Cerita Pendek</h1>

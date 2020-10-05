@@ -18,7 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AuthService } from './auth/auth.service';
-
+import { Router } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { AuthService } from './auth/auth.service';
   ],
   entryComponents:[LoginComponent,RegisterComponent],
   imports: [
+    
     BrowserModule,
     MatIconModule,
     MatToolbarModule,
@@ -38,7 +41,9 @@ import { AuthService } from './auth/auth.service';
     MatDialogModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    RouterModule.forRoot([]),
+    AppRoutingModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
