@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm = new FormGroup({
     email: new FormControl(),
-    // username: new FormControl(),
+    username: new FormControl(),
     password: new FormControl()
   })
 
@@ -27,11 +27,12 @@ export class RegisterComponent implements OnInit {
   register(){
     var email=this.registerForm.get('email').value
     var pass=this.registerForm.get('password').value 
+    var username=this.registerForm.get("username").value
     
     console.log(email)
     console.log(pass)
 
-    this.authService.register(email,pass)
+    this.authService.register(email,pass,username)
 
     // this.auth.createUserWithEmailAndPassword(email,pass)
     //   .then(()=>{

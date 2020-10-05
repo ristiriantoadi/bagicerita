@@ -21,12 +21,14 @@ import { AuthService } from './auth/auth.service';
 import { Router } from '@angular/router';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarComponent
   ],
   entryComponents:[LoginComponent,RegisterComponent],
   imports: [

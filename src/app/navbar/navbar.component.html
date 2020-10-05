@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+    </button> -->
+    <span>BagiCerita</span>
+    <span class="example-spacer"></span>
+    <!-- <button mat-icon-button color="primary" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+    </button> -->
+    <div *ngIf="isLoggedIn;then thenBlock;else elseBlock"></div>
+    <ng-template #thenBlock>
+      <a mat-button>{{userDisplayName}}</a>
+      <a mat-button (click)="logout()">Logout</a>
+    </ng-template>
+    <ng-template #elseBlock>
+      <a mat-button (click)="openLogin()">Login</a>
+      <a mat-button (click)="openRegister()">Register</a>
+    </ng-template>
+  </mat-toolbar>

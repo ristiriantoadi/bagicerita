@@ -1,29 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { MatDialog,MatDialogRef } from '@angular/material/dialog';
-import { AuthService } from './auth/auth.service';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '../auth/auth.service';
+import { LoginComponent } from '../login/login.component';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
-export class AppComponent {
-  title = 'bagicerita';
-  isLoggedIn;
-  user=null
+export class NavbarComponent implements OnInit {
 
+  isLoggedIn
+  user
+  userDisplayName
+  
   constructor(public dialog:MatDialog,private authService:AuthService,public  afAuth:  AngularFireAuth){
     this.afAuth.authState.subscribe(user => {
       if (user){
-        this.user = user.email;
+        this.user = user;
+        this.userDisplayName = user.displayName
         localStorage.setItem('user', JSON.stringify(this.user));
         this.isLoggedIn=true
+        console.log(this.userDisplayName)
       } else {
-        this.user=""
+        this.isLoggedIn=false
+        this.user=null
+        this.userDisplayName=""
         localStorage.setItem('user', null);
+        
       }
     })
   }
@@ -46,10 +52,14 @@ export class AppComponent {
     // data: {name: this.name, animal: this.animal}
     })
   }
+
   logout(){
     this.authService.logout()
     // this.isLoggedIn=false
     // console.log("hello")
+  }
+
+  ngOnInit(): void {
   }
 
 }

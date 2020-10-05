@@ -31,8 +31,15 @@ export class AuthService {
 
   }
 
-  async register(email: string, password: string) {
+  async register(email: string, password: string,username:string) {
     var result = await this.afAuth.createUserWithEmailAndPassword(email, password)
+    // console.log(result)
+    ;(await this.afAuth.currentUser).updateProfile({
+      displayName:username
+    })
+    // await this.user.updateProfile({
+    //   displayName:username
+    // })
     // console.log(result);
   }
 
