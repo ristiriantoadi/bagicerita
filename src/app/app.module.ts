@@ -25,6 +25,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { ListCeritaComponent } from './list-cerita/list-cerita.component';
+import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
+import { CeritaComponent } from './cerita/cerita.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { ListCeritaComponent } from './list-cerita/list-cerita.component';
     ProfileComponent,
     HomeComponent,
     ListCeritaComponent,
+    CeritaComponent,
   ],
   entryComponents:[LoginComponent,RegisterComponent],
   imports: [
@@ -50,6 +53,7 @@ import { ListCeritaComponent } from './list-cerita/list-cerita.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     // RouterModule.forRoot([]),
     AppRoutingModule
   ],

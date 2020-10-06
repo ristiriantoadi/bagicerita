@@ -3,8 +3,14 @@
         padding-top:20px;
     }
 </style>
+
 <div class="cerita">
-    <div class="item-cerita">
+    <div class="item-cerita" *ngFor="let cerita of listCerita">
+      <a class="mat-h2" href="cerita/{{cerita.key}}">{{cerita.value.title}} <small>(8pt)</small></a>
+      <p>Diposting oleh <a>{{cerita.value.author}}</a> pada Oktober 5 2020</p>
+      <!-- <h2>{{cerita.value.title}}</h2> -->
+    </div>
+    <!-- <div class="item-cerita">
       <a class="mat-h2" href="google.com">Kota Orang-orang Mati <small>(8pt)</small></a>
       <p>Diposting oleh <a>somebody</a> pada Oktober 5 2020</p>
     </div>
@@ -43,5 +49,5 @@
       <div class="item-cerita">
         <a class="mat-h2" href="google.com">Sayap Kupu-kupu<small>(8pt)</small></a>
         <p>Diposting oleh <a>TiaRahma</a> pada September 20 2020</p>
-      </div>
+      </div> -->
   </div>

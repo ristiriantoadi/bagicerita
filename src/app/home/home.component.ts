@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../auth/auth.service';
 import { RegisterComponent } from '../register/register.component';
 import { LoginComponent } from '../login/login.component';
+import { CeritaService } from '../cerita.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,8 +15,9 @@ export class HomeComponent implements OnInit {
   title = 'bagicerita';
   isLoggedIn;
   user=null
+  listCerita;
 
-  constructor(public dialog:MatDialog,private authService:AuthService,public  afAuth:  AngularFireAuth){
+  constructor(public dialog:MatDialog,private authService:AuthService,public  afAuth:  AngularFireAuth,public cerita:CeritaService){
     this.afAuth.authState.subscribe(user => {
       if (user){
         this.user = user.email;
@@ -26,9 +28,18 @@ export class HomeComponent implements OnInit {
         localStorage.setItem('user', null);
       }
     })
+
+    cerita.getListCerita().subscribe(actions=>{
+      this.listCerita=[]
+      actions.forEach(action=>{
+      this.listCerita.push({'key':action.payload.key,'value':action.payload.val()})
+      })
+      console.log(this.listCerita)
+    })
   }
 
   ngOnInit(): void {
+    
   }
 
   async openLogin(){

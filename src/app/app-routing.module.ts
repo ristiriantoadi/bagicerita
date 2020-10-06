@@ -4,11 +4,13 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CeritaComponent } from './cerita/cerita.component';
 
 
 const routes: Routes = [
   {path:'',component:HomeComponent,pathMatch: 'full'},
-  {path:'profile',component:ProfileComponent,pathMatch: 'full'}
+  {path:'profile',component:ProfileComponent,pathMatch: 'full'},
+  {path:'cerita/:id',component:CeritaComponent,pathMatch: 'full'}
   // {path:'employee',component:EmployeeComponent}
   ];
   
