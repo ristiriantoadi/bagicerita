@@ -22,13 +22,19 @@ import { Router } from '@angular/router';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
+import { ListCeritaComponent } from './list-cerita/list-cerita.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProfileComponent,
+    HomeComponent,
+    ListCeritaComponent,
   ],
   entryComponents:[LoginComponent,RegisterComponent],
   imports: [
@@ -44,7 +50,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    RouterModule.forRoot([]),
+    // RouterModule.forRoot([]),
     AppRoutingModule
   ],
   providers: [AuthService],
