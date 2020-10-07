@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CeritaService } from '../cerita.service';
 
@@ -12,7 +13,13 @@ export class CeritaComponent implements OnInit {
 
   ceritaId;
   ceritaPost;
-  isLoggedIn
+  isLoggedIn;
+  user;
+  commentForm = new FormGroup({
+    // email: new FormControl(),
+    // username: new FormControl(),
+    comment: new FormControl()
+  })
 
   constructor(private route: ActivatedRoute,private cerita:CeritaService,public  afAuth:  AngularFireAuth) {
     this.afAuth.authState.subscribe(user => {
@@ -21,15 +28,26 @@ export class CeritaComponent implements OnInit {
         // this.userDisplayName = user.displayName
         // localStorage.setItem('user', JSON.stringify(this.user));
         this.isLoggedIn=true
+        this.user=user;
         // console.log(this.userDisplayName)
       } else {
         this.isLoggedIn=false
-        // this.user=null
+        this.user=null
         // this.userDisplayName=""
         localStorage.setItem('user', null);
         
       }
     })
+  }
+
+  sendComment(){
+    var comment=this.commentForm.get('comment').value;
+    // console.log(comment) 
+    // console.log(this.user)
+    this.cerita.sendComment(comment,this.ceritaId,this.user.displayName)
+    // this.commentForm.get('comment').value=""
+    // this.commentForm.get("comments").setValue("")
+    this.commentForm.reset()
   }
 
   ngOnInit(): void {
@@ -51,7 +69,8 @@ export class CeritaComponent implements OnInit {
           this.ceritaPost.comments=[]
           actions.forEach(action=>{
             this.ceritaPost.comments.push({'key':action.payload.key,'value':action.payload.val()})
-            })          
+          })
+          this.ceritaPost.comments.reverse()          
         })
         console.log(this.ceritaPost)
 

@@ -50,11 +50,11 @@
         <h3>Comment</h3>
         <div class="form-comment" *ngIf="isLoggedIn;then thenBlock"></div>
         <ng-template #thenBlock>
-            <mat-form-field class="example-full-width">
+            <mat-form-field [formGroup] = "commentForm" class="example-full-width">
                 <mat-label>Komentar</mat-label>
-                <textarea cdkTextareaAutosize matInput placeholder="Tulis komentar di sini ... "></textarea>
+                <textarea formControlName="comment" cdkTextareaAutosize matInput placeholder="Tulis komentar di sini ... "></textarea>
             </mat-form-field>
-            <button mat-flat-button color="primary">Kirim komentar</button>
+            <button mat-flat-button color="primary" (click)="sendComment()">Kirim komentar</button>
         </ng-template>
         <div class="list-comment">
             <div *ngFor="let comment of ceritaPost.comments" class="comment">

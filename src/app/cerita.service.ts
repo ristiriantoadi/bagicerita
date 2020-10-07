@@ -24,4 +24,8 @@ export class CeritaService {
     return this.db.list("/cerita/"+id+"/comments").snapshotChanges()
   }
 
+  sendComment(comment,id,author){
+    this.db.list("/cerita/"+id+"/comments").push({"author":author,"content":comment})   
+  }
+
 }
