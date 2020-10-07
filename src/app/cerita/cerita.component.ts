@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CeritaService } from '../cerita.service';
 
@@ -10,9 +11,26 @@ import { CeritaService } from '../cerita.service';
 export class CeritaComponent implements OnInit {
 
   ceritaId;
-  ceritaPost
+  ceritaPost;
+  isLoggedIn
 
-  constructor(private route: ActivatedRoute,private cerita:CeritaService) { }
+  constructor(private route: ActivatedRoute,private cerita:CeritaService,public  afAuth:  AngularFireAuth) {
+    this.afAuth.authState.subscribe(user => {
+      if (user){
+        // this.user = user;
+        // this.userDisplayName = user.displayName
+        // localStorage.setItem('user', JSON.stringify(this.user));
+        this.isLoggedIn=true
+        // console.log(this.userDisplayName)
+      } else {
+        this.isLoggedIn=false
+        // this.user=null
+        // this.userDisplayName=""
+        localStorage.setItem('user', null);
+        
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap)=>{

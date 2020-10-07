@@ -30,6 +30,11 @@
     .comment {
         margin: 20px 0
     }
+
+    .example-full-width {
+        width: 100%;
+        /* height:600px; */
+    }
 </style>
 <app-navbar></app-navbar>
 <!-- <p>{{ceritaPost.key}}</p> -->
@@ -43,6 +48,14 @@
     </div>
     <div class="comments">
         <h3>Comment</h3>
+        <div class="form-comment" *ngIf="isLoggedIn;then thenBlock"></div>
+        <ng-template #thenBlock>
+            <mat-form-field class="example-full-width">
+                <mat-label>Komentar</mat-label>
+                <textarea cdkTextareaAutosize matInput placeholder="Tulis komentar di sini ... "></textarea>
+            </mat-form-field>
+            <button mat-flat-button color="primary">Kirim komentar</button>
+        </ng-template>
         <div class="list-comment">
             <div *ngFor="let comment of ceritaPost.comments" class="comment">
                 <!-- {{comment.value.author}}     -->
