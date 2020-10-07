@@ -20,4 +20,8 @@ export class CeritaService {
     return this.db.object("/cerita/"+id).snapshotChanges()
   }
 
+  getCommentsByCeritaId(id){
+    return this.db.list("/cerita/"+id+"/comments").snapshotChanges()
+  }
+
 }

@@ -1,6 +1,73 @@
-<p>cerita works!</p>
+<style>
+    .content{
+        padding: 20px 25px;
+        width: 700px;
+    }
+    .title p{
+        padding: 0;
+        margin:0;
+    }
+
+    .title h2{
+        margin:0;
+        padding:0;
+    }
+
+    .teks-cerita{
+        margin:15px 0;
+    }
+
+    .teks-cerita p{
+        line-height: 1.5;
+        font-size: 14px;
+    }
+
+    .comment .author p{
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .comment {
+        margin: 20px 0
+    }
+</style>
+<app-navbar></app-navbar>
 <!-- <p>{{ceritaPost.key}}</p> -->
-<p>{{ceritaPost.author}}</p>
+<div class="content">
+    <div class="title">
+        <h2>{{ceritaPost.title}}</h2>
+        <p>Diposting oleh <a>{{ceritaPost.author}}</a> pada Oktober 5 2020</p>
+    </div>
+    <div class="teks-cerita">
+        <p>{{ceritaPost.content}}</p>
+    </div>
+    <div class="comments">
+        <h3>Comment</h3>
+        <div class="list-comment">
+            <div *ngFor="let comment of ceritaPost.comments" class="comment">
+                <!-- {{comment.value.author}}     -->
+                <div class="author">
+                    <p><a>{{comment.value.author}}</a> | 10 Oktober 2020 | 7pts</p>
+                </div>
+                <div class="comment-content">
+                    <p>{{comment.value.content}}</p>
+                </div>
+            </div>
+            <!-- <div class="comment">
+                <div class="author">
+                    <p><a>dayeuh</a> | 10 Oktober 2020 | 7pts</p>
+                </div>
+                <div class="comment-content">
+                    <p>Nullam pellentesque fermentum finibus. Nam eu molestie est. Nulla a odio sollicitudin, blandit velit nec, gravida risus. Ut a mollis velit. 
+                        Curabitur ac lorem et mi consectetur euismod eu id dolor. In luctus lobortis leo, vel suscipit mauris luctus pharetra. Sed a ultricies libero. 
+                        Donec rutrum lorem sed purus porttitor maximus. 
+                        In in nisl in nunc consectetur egestas. Donec eu lacus vel nunc sagittis dictum sit amet id odio.</p>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- <p>{{ceritaPost.author}}</p>
 <p>{{ceritaPost.title}}</p>
 <p>{{ceritaPost.content}}</p>
-<p>{{ceritaPost.key}}</p>
+<p>{{ceritaPost.key}}</p> -->
