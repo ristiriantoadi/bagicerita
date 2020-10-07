@@ -9,7 +9,7 @@ import { CeritaComponent } from './cerita/cerita.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent,pathMatch: 'full'},
-  {path:'profile',component:ProfileComponent,pathMatch: 'full'},
+  {path:'profile/:username',component:ProfileComponent,pathMatch: 'full'},
   {path:'cerita/:id',component:CeritaComponent,pathMatch: 'full'}
   // {path:'employee',component:EmployeeComponent}
   ];

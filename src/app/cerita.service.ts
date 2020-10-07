@@ -28,4 +28,8 @@ export class CeritaService {
     this.db.list("/cerita/"+id+"/comments").push({"author":author,"content":comment})   
   }
 
+  getUser(username){
+    return this.db.object("/user/"+username).snapshotChanges()
+  }
+
 }

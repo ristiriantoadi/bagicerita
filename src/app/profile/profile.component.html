@@ -14,15 +14,15 @@
 <app-navbar></app-navbar>
 <!-- <p>profile works!</p> -->
 <div style="padding:20px" class="container">
-    <h1  class="mat-h1">Zeth</h1>
+    <h1  class="mat-h1">{{username}}</h1>
     <div class="tab">
         <mat-tab-group>
             <mat-tab label="Info">
                 <div>
                     <div class="biodata">
                         <div class="nama item">
-                            <span class="label">Nama</span>
-                            <div>Ristirianto Adi</div>
+                            <span class="label">Nama Lengkap</span>
+                            <div>{{profile.namaLengkap}}</div>
                         </div>
                         <div class="nama item">
                             <span class="label">Email</span>
@@ -30,15 +30,15 @@
                         </div>
                         <div class="nama item">
                             <span class="label">Kota</span>
-                            <div>Bandung</div>
+                            <div>{{profile.kota}}</div>
                         </div>
                         <div class="nama item">
                             <span class="label">Tanggal Lahir</span>
-                            <div>Sept 20</div>
+                            <div>{{profile.tanggalLahir}}</div>
                         </div>
                         <div class="nama item">
                             <span class="label">About Me</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer urna eros, interdum at rhoncus vitae, elementum in purus. Etiam et velit at ex semper ultrices. Sed sit amet pellentesque enim. Praesent nisl nibh, posuere vitae pretium id, consectetur non mi. Donec sollicitudin eget enim id tristique. Sed a dignissim augue. Vivamus ac scelerisque neque. Maecenas eu mauris leo. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+                            <p>{{profile.aboutMe}}</p>
                         </div>
                     </div>
                 </div>
