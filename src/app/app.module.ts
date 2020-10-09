@@ -27,6 +27,7 @@ import { HomeComponent } from './home/home.component';
 import { ListCeritaComponent } from './list-cerita/list-cerita.component';
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
 import { CeritaComponent } from './cerita/cerita.component';
+import { RegistrasiComponent } from './registrasi/registrasi.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CeritaComponent } from './cerita/cerita.component';
     HomeComponent,
     ListCeritaComponent,
     CeritaComponent,
+    RegistrasiComponent,
   ],
   entryComponents:[LoginComponent,RegisterComponent],
   imports: [

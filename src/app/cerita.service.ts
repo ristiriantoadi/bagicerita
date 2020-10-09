@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CeritaService {
 
-  constructor(public db:AngularFireDatabase) { }
+  constructor(public db:AngularFireDatabase, private router:Router) { }
 
   getListCerita(){
     return this.db.list("/cerita").snapshotChanges()
@@ -26,6 +27,19 @@ export class CeritaService {
 
   sendComment(comment,id,author){
     this.db.list("/cerita/"+id+"/comments").push({"author":author,"content":comment})   
+  }
+
+  registrasi(namaLengkap,email,kota,ttl,aboutMe,username){
+    this.db.object("user/"+username).update({
+      "namaLengkap":namaLengkap,
+      "email":email,
+      "kota":kota,
+      "ttl":ttl,
+      "aboutMe":aboutMe,
+      // "username":username
+    }).then(()=>{
+      this.router.navigate(['/profile',username])
+    })
   }
 
   getUser(username){

@@ -5,10 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CeritaComponent } from './cerita/cerita.component';
+import { RegistrasiComponent } from './registrasi/registrasi.component';
 
 
 const routes: Routes = [
   {path:'',component:HomeComponent,pathMatch: 'full'},
+  {path:'registrasi',component:RegistrasiComponent,pathMatch: 'full'},
   {path:'profile/:username',component:ProfileComponent,pathMatch: 'full'},
   {path:'cerita/:id',component:CeritaComponent,pathMatch: 'full'}
   // {path:'employee',component:EmployeeComponent}

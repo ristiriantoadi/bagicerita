@@ -5,6 +5,7 @@ import { AngularFireAuth } from  "@angular/fire/auth";
 import { User } from  'firebase';
 import { MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
+import { RegisterComponent } from '../register/register.component';
 
 @Injectable({
   providedIn: 'root'
@@ -31,12 +32,22 @@ export class AuthService {
 
   }
 
-  async register(email: string, password: string,username:string) {
-    var result = await this.afAuth.createUserWithEmailAndPassword(email, password)
+  register(email: string, password: string,username:string,dialogRef:MatDialogRef<RegisterComponent>) {
+    this.afAuth.createUserWithEmailAndPassword(email, password)
+      .then((cred)=>{
+        console.log(cred.user)
+        cred.user.updateProfile({
+          displayName:username
+        }).then(()=>{
+          this.router.navigate(['/registrasi'])
+        })
+      })
     // console.log(result)
-    ;(await this.afAuth.currentUser).updateProfile({
-      displayName:username
-    })
+    // ;(await this.afAuth.currentUser).updateProfile({
+    //   displayName:username
+    // })
+    // console.log()
+    // this.router.navigate['registrasi']
     // await this.user.updateProfile({
     //   displayName:username
     // })

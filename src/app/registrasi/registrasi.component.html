@@ -1,0 +1,47 @@
+<style>
+    mat-form-field{
+        width: 600px;
+    }
+</style>
+<app-navbar></app-navbar>
+<!-- <p>registrasi works!</p> -->
+<div style="padding:20px" class="container">
+    <h1  class="mat-h1">{{username}}</h1>
+    <div class="dialog-form">
+        <form [formGroup] = "registrasiForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Nama Lengkap</mat-label>
+                <input formControlName="namaLengkap" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Kota</mat-label>
+                <input formControlName="kota" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>TTL</mat-label>
+                <input formControlName="ttl" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>About Me</mat-label>
+                <textarea formControlName="aboutMe" cdkTextareaAutosize matInput placeholder="Tulis komentar di sini ... "></textarea>
+            </mat-form-field>
+            <br>
+            <!-- <mat-form-field style="width: 300px;" appearance="fill">
+                <mat-label>Konfirmasi Password</mat-label>
+                <input matInput type="password">
+            </mat-form-field> -->
+            <br>
+            <button (click)="registrasi()" mat-flat-button color="primary">
+                Register
+            </button>
+        </form>
+    </div>
+</div>

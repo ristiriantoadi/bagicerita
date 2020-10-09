@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { AuthService } from '../auth/auth.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -18,7 +19,16 @@ export class RegisterComponent implements OnInit {
     password: new FormControl()
   })
 
-  constructor(private authService:AuthService) {
+  constructor(private authService:AuthService,public dialogRef: MatDialogRef<RegisterComponent>,public  afAuth:  AngularFireAuth) {
+    this.afAuth.authState.subscribe(user => {
+      if (user){
+        // this.user = user;
+        // localStorage.setItem('user', JSON.stringify(this.user));
+        this.dialogRef.close()
+      } else {
+        localStorage.setItem('user', null);
+      }
+    })
   }
 
   ngOnInit(): void {
@@ -29,10 +39,10 @@ export class RegisterComponent implements OnInit {
     var pass=this.registerForm.get('password').value 
     var username=this.registerForm.get("username").value
     
-    console.log(email)
-    console.log(pass)
+    // console.log(email)
+    // console.log(pass)
 
-    this.authService.register(email,pass,username)
+    this.authService.register(email,pass,username,this.dialogRef)
 
     // this.auth.createUserWithEmailAndPassword(email,pass)
     //   .then(()=>{
